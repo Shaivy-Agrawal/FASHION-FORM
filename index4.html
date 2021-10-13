@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Form</title>
+    <style>
+      body::-webkit-scrollbar {
+        width: 13px; 
+      }
+
+      body::-webkit-scrollbar-track {
+        background: rgb(240,240,255); 
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-color: rgba(16,36,66, 0.8);
+        border-radius: 20px;
+        border: 3px solid rgb(240,240,255);
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(206, 208, 239);
+      }
+      #container {
+        width: 1300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        padding-top: 60px;
+      }
+      #imag-box {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        width: 70%;
+        background-color: white;
+      }
+      #imag {
+        /* border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px; */
+        background: url("design.png") center center/cover no-repeat;
+        width: 100%;
+        height: 700px;
+        margin-top: 110px;
+      }
+      form {
+        background-color: rgb(16, 36, 66);
+        color: rgba(201, 212, 227, 0.7);
+        padding: 100px;
+        padding-top: 50px;
+        padding-bottom: 70px;
+        width: 40%;
+        position: relative;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 16px;
+      }
+      h1 {
+        font-size: 35px;
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 2px solid rgb(88, 98, 213);
+        margin-bottom: 60px;
+        font-family: serif;
+        font-weight: 650;
+        color: rgb(201, 212, 227);
+        letter-spacing: 1px;
+      }
+      input,
+      select {
+        font-family: monospace;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(201, 212, 227, 0.2);
+        caret-color: rgba(201, 212, 227, 0.5);
+        margin-bottom: 30px;
+        width: 100%;
+        color: rgba(147, 142, 253, 0.8);
+        font-size: 15px;
+        letter-spacing: 2px;
+      }
+      #submit {
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        border: none;
+        width: 100%;
+        left: 0px;
+        height: 70px;
+        background-color: rgb(88, 98, 213);
+        color: rgb(212, 222, 235);
+        font-family: serif;
+        font-weight: bold;
+        font-size: 20px;
+        cursor: pointer;
+        border-bottom-right-radius: 10px;
+        letter-spacing: 1px;
+      }
+      i {
+        padding-left: 10px;
+      }
+      .clothes {
+        margin-top: 10px;
+        font-family: sans-serif;
+      }
+      .clothes select {
+        position: relative;
+        z-index: 1;
+      }
+      #angle-down {
+        position: absolute;
+        right: 125px;
+        bottom: 346px;
+        pointer-events: none;
+        opacity: 0.8;
+        z-index: 2;
+      }
+      .fa-tshirt {
+        position: absolute;
+        bottom: 348px;
+        z-index: 2;
+        left: 112px;
+      }
+      .clothes option,
+      .clothes select {
+        cursor: pointer;
+        appearance: none;
+        font-family: sans-serif;
+        border: none;
+        background-color: rgb(36, 57, 82);
+        padding: 20px;
+        padding-left: 60px;
+        width: 100%;
+        border-radius: 30px;
+        color: rgba(212, 222, 235, 0.7);
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+      option {
+        background-color: white;
+      }
+      #donation {
+        margin: auto;
+      }
+      p {
+        text-align: center;
+      }
+      .btn {
+        padding: 20px;
+        width: 130px;
+        color: rgb(212, 222, 235);
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      #yes {
+        background-color: rgb(88, 98, 213);
+        margin-left: 55px;
+        margin-right: 20px;
+      }
+      #yes:hover {
+        background-color: rgb(70, 80, 180);
+        color: rgb(179, 179, 179);
+      }
+      #no {
+        background-color: rgb(36, 57, 82);
+      }
+      #no:hover {
+        background-color: rgb(32, 51, 73);
+        color: rgb(161, 161, 161);
+      }
+      #submit:hover {
+        background-color: rgb(70, 80, 180);
+      }
+      .terms {
+        line-height: 1px;
+        margin-top: 60px;
+        color: rgb(129, 134, 218);
+        font-family: serif;
+        font-size: 18px;
+        font-weight: lighter;
+      }
+      .terms p {
+        font-style: italic;
+      }
+      #term-flex {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+      }
+      #term-flex input[type="checkbox"] {
+        appearance: none;
+        border: 1px solid #565656;
+        border-radius: 3px;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        font-weight: bold;
+        margin-right: 7px;
+      }
+      #term-flex label {
+        color: rgba(201, 212, 227, 0.7);
+        margin-top: 15px;
+        font-size: 18px;
+      }
+      #term-flex input[type="checkbox"]:hover {
+        border: 1px solid #676767;
+        background-color: rgb(13, 30, 58);
+      }
+      #term-flex input[type="checkbox"]:checked {
+        border: 1px solid #334466;
+        background-color: rgb(85, 96, 224);
+        color: rgb(217, 217, 243);
+      }
+      #term-flex input[type="checkbox"]:checked:hover {
+        background-color: rgb(62, 71, 167);
+      }
+      #term-flex input[type="checkbox"]:checked:after {
+        content: "\2713";
+        font-size: 14px;
+        margin-left: 2px;
+      }
+      #submit[disabled] {
+        background-color: rgb(61, 68, 145);
+        color: #8a8a8a;
+        cursor: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="imag-box">
+        <div id="imag"></div>
+      </div>
+      <form action="#">
+        <h1>Select Your Collection</h1>
+        <div class="fields">
+          <label for="fullname">Full Name</label>
+          <input type="text" name="fullname" id="fullname" />
+        </div>
+        <div class="fields">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div class="fields">
+          <label for="gender">Gender</label>
+          <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="fields">
+          <label for="ph-no">Mobile Number</label>
+          <input
+            type="tel"
+            name="ph-no"
+            id="ph-no"
+            minlength="10"
+            maxlength="10"
+          />
+        </div>
+        <div class="fields clothes">
+          <i class="fas fa-tshirt"></i>
+          <select name="clothes" id="clothes">
+            <option value="sel" disabled selected>FASHION TYPES</option>
+            <option value="ww">WESTERN WEAR</option>
+            <option value="iw">INDIAN WEAR</option>
+            <option value="c">CASUAL WEAR</option>
+            <option value="f">FORMAL WEAR</option>
+          </select>
+          <i class="fas fa-angle-down" id="angle-down"></i>
+        </div>
+        <div id="donation">
+          <p>Would you like to make a charity donation?</p>
+          <button id="yes" class="btn">
+            Yes<i class="far fa-laugh-beam"></i>
+          </button>
+          <button id="no" class="btn">No<i class="far fa-frown"></i></button>
+        </div>
+        <button type="submit" id="submit">
+          Submit<i class="fas fa-arrow-right"></i>
+        </button>
+        <div class="terms">
+          <p>Agree to our Terms & Conditions?</p>
+          <div id="term-flex">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              value="Yes"
+              style="margin-top: 1px"
+            />
+            <label for="terms">Yes, I agree.</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    $(function () {
+      $('button[type="submit"]').attr("disabled", true);
+      $("#terms")
+        .change(function () {
+          $("#submit").prop("disabled", !this.checked);
+        })
+        .change();
+    });
+  </script>
+</html>
